@@ -25,7 +25,7 @@ window.addEventListener('load', function () {
             //de llamar a la API para eliminar una pelicula
             let deleteButton = '<button' +
                                       ' id=' + '\"' + 'btn_delete_' + turno.id + '\"' +
-                                      ' type="button" onclick="deleteBy('+turno.id+')" class="btn btn-danger btn_delete">' +
+                                      ' type="button" onclick="confirmDelete('+turno.id+')" class="btn btn-danger btn_delete">' +
                                       '&times' +
                                       '</button>';
 
@@ -42,13 +42,11 @@ window.addEventListener('load', function () {
             //como primer columna pondremos el boton modificar
             //luego los datos de la pelicula
             //como ultima columna el boton eliminar
-            turnoRow.innerHTML = '<td>' + turno.id + '</td>' +
-                    '<td class=\"td_paciente\">' + turno.paciente.toUpperCase() + '</td>' +
-                    '<td class=\"td_odontologo\">' + turno.odontogolo.toUpperCase() + '</td>' +
-                    '<td class=\"td_fecha\">' + turno.fecha.toUpperCase() + '</td>' +
-                    '<td>' + updateButton + '</td>'+
+            turnoRow.innerHTML = '<td>' + updateButton + '</td>' +
+                    '<td class=\"td_paciente\">' + turno.paciente.nombre.toUpperCase().concat(" ").concat(turno.paciente.apellido.toUpperCase()) + '</td>' +
+                    '<td class=\"td_odontologo\">' + turno.odontologo.nombre.toUpperCase().concat(" ").concat(turno.odontologo.apellido.toUpperCase()) + '</td>' +
+                    '<td class=\"td_fecha\">' + turno.fecha + '</td>' +
                     '<td>' + deleteButton + '</td>';
-
         };
 
     })

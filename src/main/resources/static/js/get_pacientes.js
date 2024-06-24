@@ -25,7 +25,7 @@ window.addEventListener('load', function () {
             //de llamar a la API para eliminar una pelicula
             let deleteButton = '<button' +
                                       ' id=' + '\"' + 'btn_delete_' + paciente.id + '\"' +
-                                      ' type="button" onclick="deleteBy('+paciente.id+')" class="btn btn-danger btn_delete">' +
+                                      ' type="button" onclick="confirmDelete('+paciente.id+')" class="btn btn-danger btn_delete">' +
                                       '&times' +
                                       '</button>';
 
@@ -42,14 +42,13 @@ window.addEventListener('load', function () {
             //como primer columna pondremos el boton modificar
             //luego los datos de la pelicula
             //como ultima columna el boton eliminar
-            pacienteRow.innerHTML = '<td>' + paciente.id + '</td>' +
+            pacienteRow.innerHTML = '<td>' + updateButton + '</td>' +
                     '<td class=\"td_nombre\">' + paciente.nombre.toUpperCase() + '</td>' +
                     '<td class=\"td_apellido\">' + paciente.apellido.toUpperCase() + '</td>' +
                     '<td class=\"td_cedula\">' + paciente.cedula.toUpperCase() + '</td>' +
                     '<td class=\"td_fechaIngreso\">' + paciente.fechaIngreso + '</td>' +
                      '<td class=\"td_calle\">' + paciente.domicilio.calle.toUpperCase() + '</td>' +
                     '<td class=\"td_email\">' + paciente.email.toUpperCase() + '</td>' +
-                    '<td>' + updateButton + '</td>'+
                     '<td>' + deleteButton + '</td>';
 
         };

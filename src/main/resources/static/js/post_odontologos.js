@@ -53,9 +53,9 @@ window.addEventListener('load', function () {
 
 
     function resetUploadForm(){
-        document.querySelector('#titulo').value = "";
-        document.querySelector('#categoria').value = "";
-         document.querySelector('#premios').value = "";
+        document.querySelector('#matricula').value = "";
+        document.querySelector('#nombre').value = "";
+         document.querySelector('#apellido').value = "";
 
     }
 

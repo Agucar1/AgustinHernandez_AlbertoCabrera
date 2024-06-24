@@ -9,10 +9,14 @@ window.addEventListener('load', function () {
 
        //creamos un JSON que tendrá los datos de la nueva película
         const formData = {
-            paciente: document.querySelector('#paciente').value,
-            odontologo: document.querySelector('#odontologo').value,
+            paciente: {
+                id: document.querySelector('#paciente').value,
+            },
+            odontologo: {
+                id: document.querySelector('#odontologo').value,
+            },
             fecha: document.querySelector('#fecha').value
-                    };
+        };
         //invocamos utilizando la función fetch la API peliculas con el método POST que guardará
         //la película que enviaremos en formato JSON
         const url = '/turnos';
@@ -53,10 +57,9 @@ window.addEventListener('load', function () {
 
 
     function resetUploadForm(){
-        document.querySelector('#titulo').value = "";
-        document.querySelector('#categoria').value = "";
-         document.querySelector('#premios').value = "";
-
+        document.querySelector('#paciente').value = "";
+        document.querySelector('#odontologo').value = "";
+         document.querySelector('#fecha').value = "";
     }
 
     (function(){
@@ -67,4 +70,28 @@ window.addEventListener('load', function () {
             document.querySelector(".nav .nav-item a:last").addClass("active");
         }
     })();
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+    // Función para cargar datos en un select
+    const cargarDatos = (url, selectId) => {
+        const settings = { method: 'GET' };
+        fetch(url, settings)
+        .then(response => response.json())
+        .then(data => {
+            const selectElement = document.getElementById(selectId);
+            selectElement.innerHTML = ''; // Limpiar opciones actuales
+            data.forEach(opcion => {
+                const optionElement = document.createElement('option');
+                optionElement.value = opcion.id; // Asignamos el id al value
+                optionElement.textContent = `${opcion.nombre} ${opcion.apellido}`; // Nombre completo
+                selectElement.appendChild(optionElement);
+            });
+        })
+        .catch(error => console.error('Error al cargar datos:', error));
+    };
+
+    // Cargar datos para pacientes y odontólogos
+    cargarDatos('/pacientes', 'paciente');
+    cargarDatos('/odontologos', 'odontologo');
 });

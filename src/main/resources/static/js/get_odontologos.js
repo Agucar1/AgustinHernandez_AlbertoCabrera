@@ -18,7 +18,7 @@ window.addEventListener('load', function () {
 
             let deleteButton = '<button' +
                                       ' id=' + '\"' + 'btn_delete_' + odontologo.id + '\"' +
-                                      ' type="button" onclick="deleteBy('+odontologo.id+')" class="btn btn-danger btn_delete">' +
+                                      ' type="button" onclick="confirmDelete('+odontologo.id+')" class="btn btn-danger btn_delete">' +
                                       '&times' +
                                       '</button>';
 
@@ -44,6 +44,4 @@ window.addEventListener('load', function () {
           document.querySelector(".nav .nav-item a:last").addClass("active");
       }
     })
-
-
-    })
+});

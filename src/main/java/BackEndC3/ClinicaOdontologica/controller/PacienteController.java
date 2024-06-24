@@ -52,7 +52,7 @@ public class PacienteController {
         }
     }
 
-    @DeleteMapping("/eliminar/{id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<String> eliminarPacientePorId(@PathVariable Long id) {
         Optional<Paciente> pacienteBuscado = pacienteService.buscarPorId(id);
         if (pacienteBuscado.isPresent()) {
